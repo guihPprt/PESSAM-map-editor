@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Editor de Mapas com Tileset</title>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #00bcd4;
+    }
+    input, select, button {
+      background-color: #2c2c2c;
+      color: #f0f0f0;
+      border: 1px solid #555;
+      padding: 5px;
+      margin: 5px;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #3a3a3a;
+      cursor: pointer;
+    }
+    #canvasWrapper {
+      max-width: 90vw;
+      max-height: 70vh;
+      overflow: auto;
+      margin: 20px auto;
+      border: 2px solid #00bcd4;
+      background-color: #2c2c2c;
+      padding: 10px;
+      border-radius: 6px;
+      position: relative;
+    }
+    canvas {
+      display: block;
+      margin: auto;
+    }
+    #output {
+      background-color: #2c2c2c;
+      padding: 10px;
+      border-radius: 4px;
+      white-space: pre-wrap;
+      margin-top: 10px;
+      text-align: left;
+    }
+    #previewCanvas {
+      position: absolute;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>🗺️ Editor de Mapas com Tileset</h1>
+  <input type="file" id="mapUpload" accept=".json">
+  <select id="mapSelector" style="display:none;"></select>
+
+  <div>
+    Nome do mapa: <input type="text" id="mapName" value="map1">
+    Largura: <input type="number" id="mapWidth" value="20" min="1">
+    Altura: <input type="number" id="mapHeight" value="10" min="1">
+    <button onclick="createMap()">Criar mapa</button>
+  </div>
+
+  <div>
+    Ferramenta:
+    <select id="tool">
+      <option value="pencil">Lápis</option>
+      <option value="line">Linha</option>
+      <option value="bucket">Balde</option>
+      <option value="rect">Retângulo</option>
+    </select>
+
+    Tile:
+    <select id="tile">
+      <option value="0">0: Nada</option>
+      <option value="2">1: Dirt</option>
+      <option value="1">2: Ground</option>
+    </select>
+  </div>
+
+  <div>
+    Tileset: <input type="file" id="tilesetUpload" accept="image/*">
+  </div>
+
+  <div id="canvasWrapper">
+    <canvas id="mapCanvas"></canvas>
+    <canvas id="previewCanvas"></canvas>
+  </div>
+
+  <button onclick="generateJSON()">Gerar JSON</button>
+  <pre id="output"></pre>
+
+  <script src="src/script.js"></script>
+</body>
+</html>
