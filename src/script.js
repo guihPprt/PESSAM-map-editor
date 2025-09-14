@@ -90,7 +90,8 @@ let map = [], width = 20, height = 10, tileSize = 48;
     let tileRects = {
       1: { x: 0, y: 0, w: 16, h: 16 },      // ground
       2: { x: 16, y: 0, w: 16, h: 16 },      // dirt
-      3: { x: 0, y: 16, w: 16, h: 16}
+      3: { x: 0, y: 16, w: 16, h: 16 },
+      4: { x: 32, y: 0, w: 16, h: 16 }
       
     };
 
